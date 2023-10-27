@@ -6,15 +6,12 @@ namespace SpaceBattle.Lib.Tests;
 [Binding]
 public class Move
 {
-    private readonly ScenarioContext _scenarioContext;
     private readonly Mock<IMovable> _movable;
 
     private Action commandExecutionLambda;
 
-    public Move(ScenarioContext scenarioContext)
+    public Move()
     {
-        _scenarioContext = scenarioContext;
-
         _movable = new Mock<IMovable>();
 
         commandExecutionLambda = () => { };
