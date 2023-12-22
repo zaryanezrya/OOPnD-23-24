@@ -1,4 +1,4 @@
-using _Vector;
+using vectr;
 
 namespace SpaceBattle.Lib.Test
 {

@@ -1,7 +1,7 @@
 ﻿namespace SpaceBattle.Tests;
-using _IMovable;
-using _SpaceBattle;
-using _Vector;
+using Movable;
+using SpaceBattle;
+using vectr;
 using Moq;
 using TechTalk.SpecFlow;
 

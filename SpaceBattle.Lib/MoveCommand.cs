@@ -1,7 +1,7 @@
-using _ICommand;
-using _IMovable;
+using Command;
+using Movable;
 
-namespace _SpaceBattle;
+namespace SpaceBattle;
 
 public class MoveCommand : ICommand
 {
