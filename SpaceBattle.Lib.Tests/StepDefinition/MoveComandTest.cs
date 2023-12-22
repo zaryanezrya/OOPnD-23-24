@@ -1,9 +1,9 @@
 ﻿namespace SpaceBattle.Tests;
+using Moq;
 using Movable;
 using SpaceBattle;
-using vectr;
-using Moq;
 using TechTalk.SpecFlow;
+using vectr;
 
 [Binding]
 public class MoveTest
