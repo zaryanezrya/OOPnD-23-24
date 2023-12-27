@@ -1,9 +1,10 @@
-﻿namespace SpaceBattle.Tests;
+﻿using Spacebattle;
 using Moq;
 using Movable;
-using SpaceBattle;
 using TechTalk.SpecFlow;
 using vectr;
+
+namespace SpaceBattle.Lib.Test;
 
 [Binding]
 public class MoveTest
@@ -36,7 +37,6 @@ public class MoveTest
     }
 
     [Given("изменить положение в пространстве космического корабля невозможно")]
-    [Obsolete]
     public void NotSetPosition()
     {
         _movable.SetupSet(m => m.Location).Throws<Exception>();
@@ -67,3 +67,4 @@ public class MoveTest
         Assert.Throws<Exception>(() => commandExecutionLambda());
     }
 }
+
