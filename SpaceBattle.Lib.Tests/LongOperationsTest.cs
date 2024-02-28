@@ -10,14 +10,14 @@ public class IQueueExample
     [Fact]
     public void IQueueExample1()
     {
-        var qReal = new Queue<Lib.ICommand>();
+        var qReal = new Queue<ICommand>();
         var qMock = new Mock<IQueue>();
         qMock.Setup(q => q.Take()).Returns(() =>
         {
             return qReal.Dequeue();
         });
 
-        var cmd = new Mock<Lib.ICommand>();
+        var cmd = new Mock<ICommand>();
         qReal.Enqueue(cmd.Object);
 
         Assert.Equal(cmd.Object, qMock.Object.Take());
@@ -26,20 +26,20 @@ public class IQueueExample
     [Fact]
     public void IQueueExample2()
     {
-        var qReal = new Queue<Lib.ICommand>();
+        var qReal = new Queue<ICommand>();
         var qMock = new Mock<IQueue>();
         qMock.Setup(q => q.Take()).Returns(() =>
         {
             return qReal.Dequeue();
         });
 
-        qMock.Setup(q => q.Add(It.IsAny<Lib.ICommand>())).Callback(
-        (Lib.ICommand cmd) =>
+        qMock.Setup(q => q.Add(It.IsAny<ICommand>())).Callback(
+        (ICommand cmd) =>
         {
             qReal.Enqueue(cmd);
         });
 
-        var cmd = new Mock<Lib.ICommand>();
+        var cmd = new Mock<ICommand>();
         //qReal.Enqueue(cmd.Object);
         qMock.Object.Add(cmd.Object);
 
@@ -57,9 +57,9 @@ public class IoCExempleTests
     [Fact]
     public void IoCExample1()
     {
-        var cmd = new Mock<Lib.ICommand>();
+        var cmd = new Mock<ICommand>();
 
-        IoC.Resolve<Hwdtech.ICommand>(
+        IoC.Resolve<ICommand>(
             "IoC.Register",
             "my_first_dependency",
             (object[] args) =>
@@ -70,7 +70,7 @@ public class IoCExempleTests
 
         // -------------
 
-        var cmdFromIoC = IoC.Resolve<Lib.ICommand>("my_first_dependency");
+        var cmdFromIoC = IoC.Resolve<ICommand>("my_first_dependency");
 
         Assert.Equal(cmdFromIoC, cmd.Object);
     }
@@ -78,19 +78,19 @@ public class IoCExempleTests
     [Fact]
     public void IoCExample2()
     {
-        var qReal = new Queue<Lib.ICommand>();
+        var qReal = new Queue<ICommand>();
         var qMock = new Mock<IQueue>();
         qMock.Setup(q => q.Take()).Returns(() =>
         {
             return qReal.Dequeue();
         });
-        qMock.Setup(q => q.Add(It.IsAny<Lib.ICommand>())).Callback(
-        (Lib.ICommand cmd) =>
+        qMock.Setup(q => q.Add(It.IsAny<ICommand>())).Callback(
+        (ICommand cmd) =>
         {
             qReal.Enqueue(cmd);
         });
 
-        IoC.Resolve<Hwdtech.ICommand>(
+        IoC.Resolve<ICommand>(
             "IoC.Register",
             "Game.Queue",
             (object[] args) =>
@@ -100,7 +100,7 @@ public class IoCExempleTests
         ).Execute();
 
         // ---
-        var cmd = new Mock<Lib.ICommand>();
+        var cmd = new Mock<ICommand>();
         IoC.Resolve<IQueue>("Game.Queue").Add(cmd.Object);
 
         // ---
@@ -119,7 +119,7 @@ public class IoCExempleTests
 
         });
 
-        IoC.Resolve<Hwdtech.ICommand>(
+        IoC.Resolve<ICommand>(
             "IoC.Register",
             "Game.Command.EmptyCommand",
             (object[] args) =>
@@ -128,16 +128,6 @@ public class IoCExempleTests
             }
         ).Execute();
 
-    }
-}
-
-public class ActionCommand : Lib.ICommand
-{
-    private readonly Action _action;
-    public ActionCommand(Action action) => _action = action;
-    public void Execute()
-    {
-        _action();
     }
 }
 

@@ -1,3 +1,5 @@
+using Hwdtech;
+
 namespace SpaceBattle.Lib;
 
 public interface IQueue {
