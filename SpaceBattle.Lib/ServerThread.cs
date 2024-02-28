@@ -20,13 +20,11 @@ public class ServerThread
             }
         };
 
-        _thread = new Thread(Loop);
-    }
-
-    private void Loop() {
-        while(!_stop) {
-            _behaviour();
-        }
+        _thread = new Thread(() => {
+            while(!_stop) {
+                _behaviour();
+            }
+        });
     }
 
     internal void Stop() {
