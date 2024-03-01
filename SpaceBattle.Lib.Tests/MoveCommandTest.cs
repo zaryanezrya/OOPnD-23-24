@@ -1,4 +1,5 @@
 ﻿using Moq;
+using Hwdtech;
 
 namespace SpaceBattle.Lib.Tests;
 

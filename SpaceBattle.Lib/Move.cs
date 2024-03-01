@@ -1,4 +1,5 @@
-﻿namespace SpaceBattle.Lib;
+﻿using Hwdtech;
+namespace SpaceBattle.Lib;
 
 public interface IMovable
 {
