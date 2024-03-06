@@ -10,7 +10,6 @@ namespace SpaceBattle.Lib.Test;
 public class MoveTest
 {
     private readonly Mock<IMovable> _movable;
-    
     private Action commandExecutionLambda;
     public MoveTest()
     {
