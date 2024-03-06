@@ -10,6 +10,7 @@ namespace SpaceBattle.Lib.Test;
 public class MoveTest
 {
     private readonly Mock<IMovable> _movable;
+    
     private Action commandExecutionLambda;
     public MoveTest()
     {
@@ -36,7 +37,9 @@ public class MoveTest
         _movable.SetupGet(m => m.Velosity).Returns(new Vector(p0, p1));
     }
 
+#pragma warning disable CA1041 // Provide ObsoleteAttribute message
     [Obsolete]
+#pragma warning restore CA1041 // Provide ObsoleteAttribute message
     [Given("изменить положение в пространстве космического корабля невозможно")]
     public void NotSetPosition()
     {
