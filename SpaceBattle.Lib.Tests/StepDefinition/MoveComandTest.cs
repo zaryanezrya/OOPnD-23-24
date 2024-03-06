@@ -36,6 +36,13 @@ public class MoveTest
         _movable.SetupGet(m => m.Velosity).Returns(new Vector(p0, p1));
     }
 
+    [Obsolete]
+    [Given("изменить положение в пространстве космического корабля невозможно")]
+    public void NotSetPosition()
+    {
+        _movable.SetupSet(m => m.Location).Throws<Exception>();
+    }
+
     [Given("космический корабль, положение в пространстве которого невозможно определить")]
     public void NotFindPosition()
     {
